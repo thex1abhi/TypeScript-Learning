@@ -163,13 +163,71 @@ function f3<T>(a: T, b: T): T {
   return "data" as T;  // Here if we don't write ' as T ' it will give error 
 }
 
-f3<string>("first", "second"); 
+f3<string>("first", "second");
 
 
 //Modules 
 
 // Here we create files and export the function or logic from them and import them in the required files 
- 
-import { getPayment,addPayment} from "./payment"
+
+import { getPayment, addPayment } from "./payment"
 
 addPayment(12);
+
+
+//Type assertion 
+
+let m = Number("12");
+console.log(typeof a);
+
+
+//Non-null assertion operator 
+
+let mm: null | undefined | string;
+mm = "helluuu ji "
+
+// Type Guards 
+function func5(arg: string | number) {
+  if (typeof arg === "number") {
+    return "number";
+    // in this code block we will get all the methods/functions related to number as this is inside the number block  
+  } else if (typeof arg === "string") {
+    return "string"
+    // in this code block we will get all the methods/functions related to string as this is inside the string block 
+  } else {
+    throw new Error("This is a error ")
+  }
+}
+
+console.log(func5(12));
+console.log(func5("hello"));
+
+// using Type guard with instance of 
+
+class TvRemote {
+  switchTvOff() {
+    console.log("Switching off Tv");
+  }
+}
+
+class AcRemote {
+  switchAcOff() {
+    console.log("Switching off Ac");
+  }
+}
+
+const tv = new TvRemote();
+const Ac = new AcRemote();
+
+function switchOff(device: TvRemote | AcRemote) {
+
+  if (device instanceof TvRemote) {
+    device.switchTvOff();
+  }
+  else if (device instanceof AcRemote) {
+    device.switchAcOff();
+  }
+}
+
+//DOM in TypeScript  
+
