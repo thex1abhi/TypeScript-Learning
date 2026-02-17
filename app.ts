@@ -126,4 +126,50 @@ data("hello and welcome ");
 data("Hacker ", 20);
 
 
-//Generics in typescript  
+//Generics in typescript   
+
+//Generic function 
+function Generic<T>(a: number, value: T) {
+  return console.log("number :", a, "value:", value);
+}
+Generic(12, "random value");
+
+//  generic interface 
+interface info<T> {
+  name: string,
+  age: number,
+  key: T
+}
+
+function func3(obj: info<number>) {
+
+}
+func3({ name: "abhi", age: 20, key: 12 });
+
+// generic class  
+
+class DataGenerator<T> {
+  constructor(public key: T) { }
+}
+
+let data1 = new DataGenerator<string>("Data Generated ")
+console.log(data1);
+let data2 = new DataGenerator<number>(12)
+console.log(data2);
+
+//common error case 
+
+function f3<T>(a: T, b: T): T {
+  return "data" as T;  // Here if we don't write ' as T ' it will give error 
+}
+
+f3<string>("first", "second"); 
+
+
+//Modules 
+
+// Here we create files and export the function or logic from them and import them in the required files 
+ 
+import { getPayment,addPayment} from "./payment"
+
+addPayment(12);

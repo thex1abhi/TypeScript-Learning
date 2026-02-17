@@ -113,4 +113,28 @@ function data(a, b) {
 }
 data("hello and welcome ");
 data("Hacker ", 20);
-//Generics in typescript  
+//Generics in typescript   
+//Generic function 
+function Generic(a, value) {
+    return console.log("number :", a, "value:", value);
+}
+Generic(12, "random value");
+function func3(obj) {
+}
+func3({ name: "abhi", age: 20, key: 12 });
+// generic class  
+var DataGenerator = /** @class */ (function () {
+    function DataGenerator(key) {
+        this.key = key;
+    }
+    return DataGenerator;
+}());
+var data1 = new DataGenerator("Data Generated ");
+console.log(data1);
+var data2 = new DataGenerator(12);
+console.log(data2);
+//common error case 
+function f3(a, b) {
+    return "data"; // Here if we don't write ' as T ' it will give error 
+}
+f3("first", "second");
